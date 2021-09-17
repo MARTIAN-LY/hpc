@@ -59,11 +59,11 @@ int main()
         {
             perror("Error: ");
         }
-        else if (pid == 0)
+        else if (pid == 0) //主进程持续监听，不处理请求
         {
-            continue; 
+            continue;   
         }
-        else
+        else        //每有一个来自用户的请求，就创建一个新的进程处理，处理完毕子进程结束
         {
             read(client_socket, buf, 1024); //读取客户端内容，这里是HTTP的请求数据
             // printf("%s",buf);     // 打印读取的内容
